@@ -5,7 +5,7 @@ from app import db
 class Service(db.Model):
     id: int = db.Column(db.Integer, primary_key=True)
     name: str = db.Column(db.String(60), unique=True, nullable=False)
-    image: str = db.Column(db.String(20), unique=True, nullable=True)
+    image: str = db.Column(db.String(20), nullable=True)
     description: str = db.Column(db.String(120), nullable=False)
     essence: str = db.Column(db.String(120), nullable=False)
     development_stages: str = db.Column(db.String(120), nullable=False)

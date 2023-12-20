@@ -22,8 +22,24 @@ def admin_services():
 @app.route('/admin/service/create/', methods=['GET', 'POST'])
 @login_required
 def admin_create_service():
-    
-    return render_template('/admin/admin_add_service.html')
+    form = ServiceForm()
+
+    if form.validate_on_submit():
+        service: Service = Service()
+        service.name = form.name.data
+        service.image = 'service3.png'
+        service.description = form.description.data
+        service.essence = form.essence.data
+        service.development_stages = form.development_stages.data
+        service.cost_description = form.cost_description.data
+        service.cost = form.cost.data
+        service.demand = form.demand.data
+
+        db.session.add(service)
+        db.session.commit()
+
+        flash('Данные успешно сохранены')
+    return render_template('/admin/admin_add_service.html', form=form)
 
 
 
@@ -61,6 +77,26 @@ def admin_update_service(id: str):
         
         return render_template('/admin/admin_update_service.html', form=form)
     
+
+
+@app.route('/admin/service/delete/<id>', methods=['GET', 'POST'])
+@app.route('/admin/service/delete/<id>/', methods=['GET', 'POST'])
+@login_required
+def admin_delete_service(id: str):
+    if id is None or not id.isdigit():
+        return redirect(url_for('admin_services'))
+    
+    id: int = int(id)
+    service: tuple(bool, Service) = Service().fetch_by_index(id)
+    if service[0]:
+        service: Service = service[1]
+
+        db.session.delete(service)
+        db.session.commit()
+
+        return redirect(url_for('admin_services'))
+    else:
+        return redirect(url_for('admin_index'))
 
     
 

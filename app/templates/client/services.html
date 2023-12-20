@@ -1,0 +1,41 @@
+{% extends 'base_client.html' %} 
+{% block Title %} <title>Наши услуги</title> {% endblock %}
+{% block Body %} 
+    <div class="background">
+        <div class="container">
+            <div class="header">
+                <div class="header_left">
+                    <div class="header_left_img">
+                        <img src="/static/images/services.png" style="margin-left: -170px; margin-top: -170px;" alt="">
+                    </div>
+                </div>
+                <div class="header_right_dop">
+                    <div class="header_right_title">Наши услуги</div>
+                    <div class="header_right_desc_dop">Мы представляем большой спектр разнообразных услуг, поэтому каждый желающий найдёт у нас то, что нужно именно ему.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="services">
+        <div class="container">
+            <div class="title" style="margin-bottom: 50px;">Наши услуги</div>
+            <div class="services_items">
+                {% for index in range(services|length) %}
+                    {% if index % 2 == 0 %}
+                        <a href="/service/{{ services[index].id }}" class="services_item" style="margin-left: 30%">
+                    {% else %}
+                        <a href="/service/{{ services[index].id }}" class="services_item">
+                    {% endif %}    
+                        <div class="services_item_text">
+                            <div class="services_item_text_title">{{ services[index].name }}</div>
+                            <div class="services_item_text_desc">{{ services[index].description }}</div>
+                        </div>
+                        <div class="services_item_img"><img src="/static/images/{{ services[index].image }}" alt=""></div>
+                        <div class="services_item_rect"></div>
+                    </a>
+                {% endfor %}
+                <div class="margin" style="height: 100px;"></div>
+            </div>
+        </div>
+    </div> 
+{% endblock %}

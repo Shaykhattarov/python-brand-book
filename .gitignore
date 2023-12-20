@@ -2,3 +2,6 @@ __pycache__
 .vscode
 .idea
 /venv/
+archive.zip
+app/static/images/*
+/migration/

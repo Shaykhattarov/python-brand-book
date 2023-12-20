@@ -1,0 +1,44 @@
+{% extends 'base_admin.html' %}
+
+{% block Body %}
+    <div class="title_admin">Редактирование</div>
+    <div class="form_authorization admins">
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="add_photo">
+                <div id="image-container">
+                    <img id="preview-image" src="#" alt="" />
+                </div>
+            
+                {{ form.image(id="image-input", accept="image/*") }}
+                <button type="button" id="add-image-btn" onclick="document.getElementById('image-input').click()">Добавить фото</button>
+                
+            </div>
+            <div style="height: 50px;"></div>
+            {{ form.name(placeholder="Название услуги") }}
+            {{ form.description(class="image-description", placeholder="Описание услуги", rows="8")}}
+            {{ form.essence(class="image-description", placeholder="Что это такое?", rows="8") }}
+            {{ form.development_stages(class="image-description", placeholder="Этапы разработки", rows="8") }}
+            {{ form.cost_description(class="image-description", placeholder="О стоимости услуги", rows="8") }}
+            {{ form.cost(placeholder="Стоимость услуги") }}
+            {{ form.demand( class="image-description", placeholder="Востребованность", rows="8") }}
+
+            <div class="btn" style="margin-top: 30px;">
+                {{ form.submit(type="submit", class="form_right_btn", value="Отправить") }}
+            </div>
+            <div class="btn" style="margin-top: 5px;">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                       {% for message in messages %}
+                          <span style="color: green; font-size: 10px;">{{ message }}</span>
+                       {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            
+            <div class="btn">
+                <a class="form_right_btn" href="{{ url_for('admin_services') }}">Назад</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

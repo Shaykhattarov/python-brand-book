@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block Title %} {% endblock %}
+</head>
+
+<body class="background">
+    <header>
+        <div class="header_box">
+            <a class="header_box_item" href="/">о компании</a>
+            <a class="header_box_item" href="/services">услуги</a>
+            <a class="header_box_item" href="/cases">кейсы</a>
+            <a class="header_box_item" href="/contacts">контакты</a>
+        </div>         
+    </header>
+
+    <main>
+        {% block Body %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer_box">
+            <div class="footer_box_text">E-mail: creative.agency@com</div>
+            <div class="footer_box_text">Адрес: г. Москва, ул. Красноармейская, д. 3</div>
+        </div>
+    </footer>
+</body>

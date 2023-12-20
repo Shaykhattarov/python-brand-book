@@ -1,0 +1,28 @@
+{% extends 'base_admin.html' %}
+
+{% block Body %}
+    <div class="title_admin">Создание услуги</div>
+    <div class="form_authorization admins">
+        <div class="add_photo">
+            <div id="image-container">
+                <img id="preview-image" src="#" alt="" />
+            </div>
+            <input type="file" id="image-input" accept="image/*" />
+            <button id="add-image-btn" onclick="document.getElementById('image-input').click()">Добавить фото</button>  
+        </div>
+        <div style="height: 50px;"></div>
+        <input type="text" placeholder="Название услуги"> 
+        <textarea class="image-description" placeholder="Описание услуги" rows="8"></textarea>
+        <textarea class="image-description" placeholder="Что это такое?" rows="8"></textarea>
+        <textarea class="image-description" placeholder="Этапы разработки" rows="8"></textarea>
+        <textarea class="image-description" placeholder="О стоимости услуги" rows="8"></textarea>
+        <input type="text" placeholder="Стоимость услуги"> 
+        <textarea class="image-description" placeholder="Востребованность" rows="8"></textarea>
+        <div class="btn" style="margin-top: 30px;">
+            <a class="form_right_btn" href="admin_services.html">Создать</a>
+        </div>
+        <div class="btn">
+            <a class="form_right_btn" href="admin_services.html">Назад</a>
+        </div>
+    </div>
+{% endblock %}

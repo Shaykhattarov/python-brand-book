@@ -1,0 +1,59 @@
+{% extends 'base_client.html' %}
+
+{% block Title %} <title>Кейс {{ Case.id }}</title> {% endblock %}
+
+{% block Body %}
+        <div class="background">
+            <div class="container">
+                <div class="header" style="margin-bottom: 150px;">
+                    <div class="header_right_service">
+                        <div class="header_right_title_service"> {{ Case.name }} </div>
+                        <div class="header_right_desc_service"> {{ Case.description }}</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cases" style="padding-bottom: 130px;">
+            <div class="container">
+            <div class="cases_items">
+                <div style="height: 40px;"></div>
+
+                <div class="cases_item">
+                    <div class="cases_item_img">
+                        <div class="cases_item_img_one"><img src="/static/images/case1_color.png" alt=""></div>
+                        <div class="cases_item_img_two"><img src="/static/images/case2_color.png" alt=""></div>
+                        <div class="cases_item_img_rect"></div>
+                    </div>
+                    <div class="cases_item_number"></div>
+                </div>
+
+                <div class="service_point_title">Позиционирование бренда</div>
+                <div class="service_point_desc" style="width: 830px;">{{ Case.positioning }}</div>
+
+                <div class="service_point_title" style="margin-top: 50px;">Миссия бренда</div>
+                <div class="service_point_desc" style="width: 830px;">{{ Case.mission }}</div>
+
+                <div class="cases_item">
+                    <div class="cases_item_img">
+                        <div class="cases_item_img_one"><img src="/static/images/case3_color.png" alt=""></div>
+                        <div class="cases_item_img_two"><img src="/static/images/case4_color.png" alt=""></div>
+                        <div class="cases_item_img_rect"></div>
+                    </div>
+                    <div class="cases_item_number"></div>
+                </div>
+
+                <div class="service_point_title">Эмоции бренда</div>
+                <div class="service_point_desc" style="width: 830px;">{{ Case.emotions }}</div>
+
+                <div class="service_point_title" style="margin-top: 50px;">Цели бренда</div>
+                <ul>
+                    <li>Бизнес-цели: улучшить качество продукции, оставив цены на прежнем уровне</li>
+                    <li>Маркетинговые цели: создание сайта, через который можно не только заказать, но и выбрать удобные способы оплаты и доставки, развитие соц-сетей для привлечения целевой аудитории-</li>
+                    <li>Бренд-цели: обновить фирменный стиль на более современный и креативный, отражающий концепцию бренда</li>
+                </ul>
+
+            </div>
+        </div>
+        </div>
+{% endblock %}

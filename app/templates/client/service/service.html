@@ -1,0 +1,63 @@
+{% extends 'base_client.html' %} 
+
+{% block Title %} <title>Наши услуги</title> {% endblock %} 
+
+{% block Body %} 
+<div class="background">
+    <div class="container">
+        <div class="header">
+            <div class="header_right_service">
+                <div class="header_right_title_service">{{ service.name }}</div>
+                <div class="header_right_desc_service">{{ service.description }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="service_texts">
+    <div class="service_text">
+        <div class="container">
+            <div class="service_point">
+                <div class="service_point_num">01</div>
+                <div class="service_point_text">
+                    <div class="service_point_title">Что это такое?</div>
+                    <div class="service_point_desc">{{ service.essence }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="service_text" style="margin-top: 0px">
+        <div class="container">
+            <div class="service_point">
+                <div class="service_point_num">02</div>
+                <div class="service_point_text">
+                    <div class="service_point_title">Этапы разработки</div>
+                    <div class="service_point_desc">{{ service.development_stages }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="service_text" style="margin-top: 0px">
+        <div class="container">
+            <div class="service_point">
+                <div class="service_point_num">03</div>
+                <div class="service_point_text">
+                    <div class="service_point_title">Стоимость услуги</div>
+                    <div class="service_point_desc">{{ service.cost_description }}</div>
+                    <div class="service_point_price">{{ service.cost }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="service_text" style="margin-top: 0px; padding-bottom: 130px;">
+        <div class="container">
+            <div class="service_point">
+                <div class="service_point_num">04</div>
+                <div class="service_point_text">
+                    <div class="service_point_title">Востребованность</div>
+                    <div class="service_point_desc">{{ service.demand }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock %}

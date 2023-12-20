@@ -1,0 +1,21 @@
+{% extends 'base_admin.html' %}
+
+{% block Body %}
+        <div class="title_admin">Вход</div>
+        <form method="POST">
+            <div class="form_authorization">
+                {{ form.hidden_tag() }}
+                {{ form.login(type="text", placeholder="Логин")}}
+                    {% for error in form.login.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                {{ form.password(type="password", size=32, placeholder="Пароль")}}
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+            </div>
+            <div class="btn">
+                {{ form.submit(type="submit", class="form_right_btn", value="Войти") }}
+            </div>
+        </form>
+{% endblock %}

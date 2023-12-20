@@ -1,0 +1,11 @@
+{% extends 'base_admin.html' %}
+
+{% block Body %}
+        <div class="title_admin">Добро пожаловать!</div>
+        <div class="btn" style="margin-top: 70px;">
+            <a class="form_right_btn" href="{{ url_for('admin_services') }}">Список услуг</a>
+        </div>
+        <div class="btn">
+            <a class="form_right_btn" href="{{ url_for('logout') }}">Выйти</a>
+        </div>
+{% endblock %}

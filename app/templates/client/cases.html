@@ -1,0 +1,44 @@
+{% extends 'base_client.html' %} 
+{% block Title %} <title>Кейсы</title> {% endblock %}
+{% block Body %} 
+<div class="background">
+    <div class="container">
+        <div class="header">
+            <div class="header_left">
+                <div class="header_left_img">
+                    <img src="/static/images/cases.png" style="margin-left: -100px; margin-top: -170px;" alt="">
+                </div>
+            </div>
+            <div class="header_right_dop">
+                <div class="header_right_title">Наши кейсы</div>
+                <div class="header_right_desc_dop">Мы представляем большой спектр разнообразных услуг, поэтому каждый желающий найдёт у нас то, что нужно именно ему.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cases" style="padding-bottom: 130px;">
+    <div class="container">
+        <div class="title">Наши кейсы</div>
+        <div class="cases_items">
+            {% for elem in cases %}
+                <div class="cases_item">
+                    <div class="cases_item_info">
+                        <div class="cases_item_info_left">
+                            <div class="cases_item_info_number">0{{ elem.id }}</div>
+                        </div>
+                        <div class="cases_item_info_right">
+                            <a href="/case/{{elem.id}}" class="cases_item_info_right_title">{{ elem.name }}</a>
+                            <div href="/case/{{elem.id}}" class="cases_item_info_right_desc">{{ elem.description }}</div>
+                        </div>
+                    </div>
+                    <div class="cases_item_img">
+                        <div class="cases_item_img_one"><img src="/static/images/case1_1.png" alt=""></div>
+                        <div class="cases_item_img_two"><img src="/static/images/case1_2.png" alt=""></div>
+                        <div class="cases_item_img_rect"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> 
+{% endblock %}

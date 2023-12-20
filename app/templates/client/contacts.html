@@ -1,0 +1,44 @@
+{% extends 'base_client.html' %} 
+{% block Title %} <title>Контакты</title> {% endblock %} 
+{% block Body %} 
+<div class="background">
+    <div class="container">
+        <div class="header">
+            <div class="header_left">
+                <div class="header_left_img">
+                    <img src="/static/images/contacts.png" style="margin-top: -170px;" alt="">
+                </div>
+            </div>
+            <div class="header_right_dop">
+                <div class="header_right_title">Контакты</div>
+                <div class="header_right_desc_dop">Чтобы связаться с нами, воспользуйся контактами ниже. Мы ждём твоего сообщения!</div>
+            </div>
+        </div>
+    </div>
+    <div class="back">
+        <div style="background-color: white;">
+            <div class="container">
+                <div class="middle">
+                    <div class="contacts">
+                        <div class="contacts_left">ждём именно тебя!</div>
+                        <div class="contacts_right">
+                            <div class="contacts_right_item">
+                                <img class="contacts_right_item_icon" src="/static/images/email.png">
+                                <div class="contacts_right_item_text">creative.agency@com</div>
+                            </div>
+                            <div class="contacts_right_item">
+                                <img class="contacts_right_item_icon" src="/static/images/telegram.png">
+                                <div class="contacts_right_item_text">creative_agency</div>
+                            </div>
+                            <div class="contacts_right_item">
+                                <img class="contacts_right_item_icon" src="/static/images/site.png">
+                                <div class="contacts_right_item_text">www.creative.agency.ru</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+{% endblock %}

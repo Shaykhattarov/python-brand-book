@@ -21,7 +21,7 @@
     <div class="container">
         <div class="title">Наше отличие</div>
         <div class="advantages_items">
-            <div class="advantages_item" style="margin-right: 150px;">
+                <div class="advantages_item" style="margin-right: 150px;">
                 <div class="advantages_item_number">01</div>
                 <div class="advantages_item_title">Индивидуальный подход</div>
                 <div class="advantages_item_desc">Мы понимаем, что каждый бренд уникален. Мы тщательно анализируем вашу аудиторию, цели и ценности, чтобы создать бренд, который идеально соответствует вашей философии.</div>
@@ -50,30 +50,27 @@
     <div class="container">
         <div class="title" style="margin-bottom: 50px;">Наши услуги</div>
         <div class="services_items">
-            <div class="services_item">
+            {% if (services|length) > 3 %}
+                {% set len = 3 %}
+            {% else %}
+                {% set len = (services|length) %}
+            {% endif %}
+            
+            {% for index in range(len) %}
+                {% if index % 2 == 0 %}
+                    <a href="/service/{{ services[index].id }}" class="services_item" style="margin-left: 30%">
+                {% else %}
+                    <a href="/service/{{ services[index].id }}" class="services_item">
+                {% endif %}    
                 <div class="services_item_text">
-                    <div class="services_item_text_title">БРЕНД С НУЛЯ</div>
-                    <div class="services_item_text_desc">Мы начинаем с пустого холста, воплощая уникальные концепции. Наша цель - сделать ваш бренд неотразимым и незабываемым.</div>
+                    <div class="services_item_text_title">{{ services[index].name }}</div>
+                    <div class="services_item_text_desc">{{ services[index].description }}</div>
                 </div>
-                <div class="services_item_img"><img src="/static/images/service1.png" alt=""></div>
+                <div class="services_item_img"><img src="/static/images/{{ services[index].image }}" alt=""></div>
                 <div class="services_item_rect"></div>
-            </div>
-            <div class="services_item" style="margin-left: 30%">
-                <div class="services_item_img_2"><img src="/static/images/service2.png" alt=""></div>
-                <div class="services_item_text">
-                    <div class="services_item_text_title">БРЕНДБУК</div>
-                    <div class="services_item_text_desc">Мы разрабатываем брендбуки, которые усиливают вашу идентичность, помогая вам выделиться среди конкурентов и оставить неизгладимое впечатление.</div>
-                </div>
-                <div class="services_item_rect"></div>
-            </div>
-            <div class="services_item">
-                <div class="services_item_text">
-                    <div class="services_item_text_title">РЕБРЕНДИНГ</div>
-                    <div class="services_item_text_desc">Мы предлагаем услугу ребрендинга, которая поможет вашему бренду обновиться, пройти эволюцию и подчеркнуть актуальность в современном мире.</div>
-                </div>
-                <div class="services_item_img"><img src="/static/images/service3.png" alt=""></div>
-                <div class="services_item_rect"></div>
-            </div>
+            </a>
+            
+            {% endfor %}
             <div class="btn">
                 <a class="btn_all" href="/services" style="margin-top: 40px;">Все услуги</a>
             </div>
@@ -85,40 +82,29 @@
     <div class="container">
         <div class="title">Наши кейсы</div>
         <div class="cases_items">
-            <div class="cases_item">
-                <div class="cases_item_info">
-                    <div class="cases_item_info_left">
-                        <div class="cases_item_info_number">01</div>
+            {% if (cases|length) > 3 %}
+                {% set len = 3 %}
+            {% else %}
+                {% set len = (cases|length) %}
+            {% endif %}
+            {% for index in range(len) %}
+                <a class="cases_item" href="/case/{{ cases[index].id }}">
+                    <div class="cases_item_info">
+                        <div class="cases_item_info_left">
+                            <div class="cases_item_info_number">0{{ cases[index].id }}</div>
+                        </div>
+                        <div class="cases_item_info_right">
+                            <div class="cases_item_info_right_title">{{ cases[index].name }}</div>
+                            <div class="cases_item_info_right_desc">{{ cases[index].description }}</div>
+                        </div>
                     </div>
-                    <div class="cases_item_info_right">
-                        <div class="cases_item_info_right_title">Бренд женской одежды «Life Style»</div>
-                        <div class="cases_item_info_right_desc">Владелица бренда занимается созданием уникальных коллекций одежды, которые часто участвуют в показах внутри страны и на международном уровне. Есть несколько точек по всей стране, где
-                            каждый сможет найти для себя подходящий наряд. </div>
+                    <div class="cases_item_img">
+                        <div class="cases_item_img_one"><img src="/static/images/case1_1.png" alt=""></div>
+                        <div class="cases_item_img_two"><img src="/static/images/case1_2.png" alt=""></div>
+                        <div class="cases_item_img_rect"></div>
                     </div>
-                </div>
-                <div class="cases_item_img">
-                    <div class="cases_item_img_one"><img src="/static/images/case1_1.png" alt=""></div>
-                    <div class="cases_item_img_two"><img src="/static/images/case1_2.png" alt=""></div>
-                    <div class="cases_item_img_rect"></div>
-                </div>
-            </div>
-            <div class="cases_item">
-                <div class="cases_item_info">
-                    <div class="cases_item_info_left">
-                        <div class="cases_item_info_number">02</div>
-                    </div>
-                    <div class="cases_item_info_right">
-                        <div class="cases_item_info_right_title">Котокафе «Meow»</div>
-                        <div class="cases_item_info_right_desc">Владелица бренда занимается созданием уникальных коллекций одежды, которые часто участвуют в показах внутри страны и на международном уровне. Есть несколько точек по всей стране, где
-                            каждый сможет найти для себя подходящий наряд. </div>
-                    </div>
-                </div>
-                <div class="cases_item_img">
-                    <div class="cases_item_img_one"><img src="/static/images/case2_1.png" alt=""></div>
-                    <div class="cases_item_img_two"><img src="/static/images/case2_2.png" alt=""></div>
-                    <div class="cases_item_img_rect"></div>
-                </div>
-            </div>
+                </a>
+            {% endfor %}
         </div>
         <div class="btn">
             <a class="btn_all" href="/cases" style="margin-top: 40px;">Все кейсы</a>

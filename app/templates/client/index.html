@@ -133,13 +133,14 @@
                 <img class="img" src="/static/images/main2.png" alt="">
             </div>
             <div class="form_right">
-                <form action="">
+                <form action="" method="POST">
+                    {{ form.hidden_tag() }}
                     <div class="form_right_text">Заполни все поля и жди нашего звонка! Ты сделал правильный выбор!</div>
-                    <input type="text" placeholder="Имя">
-                    <input type="email" name="" id="" placeholder="Почта">
-                    <input type="number" name="" id="" placeholder="Телефон">
+                    {{ form.name(placeholder="Имя") }}
+                    {{ form.email(type="email", placeholder="Почта") }}
+                    {{ form.phone(type="number", placeholder="Телефон")}}
                     <div class="btn">
-                        <a class="form_right_btn" href="">Отправить</a>
+                        {{ form.submit(class="form_right_btn", value='Отправить') }}
                     </div>
                 </form>
             </div>

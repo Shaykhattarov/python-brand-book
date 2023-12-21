@@ -32,7 +32,7 @@ class AdminTestCase(unittest.TestCase):
 
     def test_created_admin(self):
         # Создаем пользователя admin и проверяем его на доступность
-        admin = Admin(login='admin', password='admin')
+        admin = Admin(login='test_admin', password='test_admin')
         self.db.session.add(admin)
         self.db.session.commit()
 

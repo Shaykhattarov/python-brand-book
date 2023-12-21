@@ -53,6 +53,9 @@ class Service(db.Model):
             service.cost_description = form.cost_description.data
             service.cost = form.cost.data
             service.demand = form.demand.data
+
+            if form.image.data is not None:
+                service.image = form.image.data
             
             db.session.commit()
             return (True, service)

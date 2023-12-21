@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
 from sqlalchemy import MetaData
+from flask_uploader import init_uploader
 
 convention = {
     "ix": 'ix_%(column_0_label)s',
@@ -15,6 +16,7 @@ convention = {
 
 app = Flask(__name__)
 app.config.from_object(Config)
+init_uploader(app)
 
 metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(app, metadata=metadata)

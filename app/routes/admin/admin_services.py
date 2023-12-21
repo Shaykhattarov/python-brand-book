@@ -29,7 +29,8 @@ def admin_services():
     service: Service = Service()
     services = service.fetchall()
     if services[0]:
-        return render_template('/admin/admin_services.html', services=services[1])
+        if len(services[1]) == 0: 
+            return render_template('/admin/admin_services.html', services=services[1])
     else:
         return redirect(url_for('admin_index'), 302)
     

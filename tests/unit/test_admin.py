@@ -12,7 +12,7 @@ class AdminTestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['CSRF_ENABLED'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'tests/test.db')
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
         app.app_context().push()
         self.app = app.test_client()
         db.create_all()

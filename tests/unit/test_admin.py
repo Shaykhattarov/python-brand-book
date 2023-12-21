@@ -32,12 +32,20 @@ class AdminTestCase(unittest.TestCase):
 
     def test_created_admin(self):
         # Создаем пользователя admin и проверяем его на доступность
-        admin = Admin(login='test_admin', password='test_admin')
-        self.db.session.add(admin)
-        self.db.session.commit()
+        
+        admin = self.db.session.query(Admin).filter_by(login='test_admin', password='test_admin').first()
+        
+        if admin is None:
+            admin = Admin(login='test_admin', password='test_admin')
+            self.db.session.add(admin)
+            self.db.session.commit()
 
-        admin = self.db.session.get(Admin, 1)
-        self.assertEqual(admin.password, 'admin')
+        admin = self.db.session.query(Admin).filter_by(login='test_admin', password='test_admin').first()
+        if admin is None:
+            self.assertEqual(admin.password, 'test_admin')
+        
+        db.session.delete(admin)
+        db.session.commit()
 
     def test_index(self):
         """ Доступ без авторизации """

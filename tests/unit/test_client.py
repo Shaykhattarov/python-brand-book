@@ -2,6 +2,9 @@
 import unittest
 import os
 
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
+
 from config import basedir
 from app import app, db
 
@@ -12,13 +15,13 @@ class ClientTestCase(unittest.TestCase):
         app.config['TESTING'] = True
         app.config['CSRF_ENABLED'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
-        app.app_context().push()
         self.app = app.test_client()
-        db.create_all()
+        self.app_context = app.app_context()
+        self.app_context.push()
+        self.db = db
 
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        self.db.session.rollback()
 
     def test_index(self):
         page = self.app.get('/')

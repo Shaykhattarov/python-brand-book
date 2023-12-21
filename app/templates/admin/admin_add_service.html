@@ -10,7 +10,7 @@
                     <img id="preview-image" src="#" alt="" />
                 </div>
                 {{ form.image(type="file", id="image-input", accept="image/*") }}
-                <button id="add-image-btn" onclick="document.getElementById('image-input').click()">Добавить фото</button>
+                <button type="button" id="add-image-btn" onclick="document.getElementById('image-input').click()">Добавить фото</button>
             </div>
             <div style="height: 50px;"></div>
             {{ form.name(placeholder="Название услуги") }}

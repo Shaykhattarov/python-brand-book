@@ -13,6 +13,8 @@ def allowed_file(filename: str):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 def upload_file(file: FileStorage):
+    if file is None:
+        return (False, None)
     if file.filename is None or len(file.filename) == 0:
         return (False, None)
     
@@ -29,8 +31,7 @@ def admin_services():
     service: Service = Service()
     services = service.fetchall()
     if services[0]:
-        if len(services[1]) == 0: 
-            return render_template('/admin/admin_services.html', services=services[1])
+        return render_template('/admin/admin_services.html', services=services[1])
     else:
         return redirect(url_for('admin_index'), 302)
     
@@ -56,6 +57,7 @@ def admin_create_service():
         service.cost_description = form.cost_description.data
         service.cost = form.cost.data
         service.demand = form.demand.data
+        
         try:
             db.session.add(service)
             db.session.commit()
@@ -95,7 +97,6 @@ def admin_update_service(id: str):
     
     if form.validate_on_submit():
         imagename = upload_file(request.files.get('image'))
-        print(imagename)
         if not imagename[0]:
             form.image.data = None
         else:

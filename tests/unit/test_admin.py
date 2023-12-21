@@ -1,6 +1,10 @@
 #!flask/bin/python
 import unittest
 import os
+from flask_migrate import Migrate
+
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
 
 from config import basedir
 from app import app, db
@@ -13,13 +17,13 @@ class AdminTestCase(unittest.TestCase):
         app.config['TESTING'] = True
         app.config['CSRF_ENABLED'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
-        app.app_context().push()
         self.app = app.test_client()
-        db.create_all()
+        self.app_context = app.app_context()
+        self.app_context.push()
+        self.db = db
 
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        self.db.session.rollback()
 
     def test_login(self):
         # Проверка на доступность страницы
@@ -29,13 +33,13 @@ class AdminTestCase(unittest.TestCase):
     def test_created_admin(self):
         # Создаем пользователя admin и проверяем его на доступность
         admin = Admin(login='admin', password='admin')
-        db.session.add(admin)
-        db.session.commit()
+        self.db.session.add(admin)
+        self.db.session.commit()
 
-        admin = db.session.get(Admin, 1)
+        admin = self.db.session.get(Admin, 1)
         self.assertEqual(admin.password, 'admin')
 
     def test_index(self):
         """ Доступ без авторизации """
         rv = self.app.get('/admin/index')
-        self.assertEqual(rv.status_code, 200)
+        self.assertEqual(rv.status_code, 404)

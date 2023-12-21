@@ -6,3 +6,4 @@ archive.zip
 app/static/images/*
 /migrations/
 /instance/
+database.db

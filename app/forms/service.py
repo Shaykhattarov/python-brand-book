@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, InputRequired
 
 class ServiceForm(FlaskForm):
     name = StringField('Название услуги', validators=[DataRequired()])
-    image = FileField('Изображение', validators=[])
+    image = FileField('Изображение')
     description = TextAreaField('Описание услуги', validators=[DataRequired()])
     essence = TextAreaField('Что это такое?', validators=[DataRequired()])
     development_stages = TextAreaField('Этапы разработки', validators=[DataRequired()])

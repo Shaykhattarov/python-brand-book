@@ -3,14 +3,14 @@
 {% block Body %}
     <div class="title_admin">Редактирование</div>
     <div class="form_authorization admins">
-        <form method="post" >
+        <form method="post" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="add_photo">
                 <div id="image-container">
                     <img id="preview-image" src="#" alt="" />
                 </div>
                 {{ form.image(type="file", id="image-input", accept="image/*") }}
-                <button id="add-image-btn" onclick="document.getElementById('image-input').click()">Добавить фото</button>
+                <button type="button" id="add-image-btn" onclick="document.getElementById('image-input').click()">Добавить фото</button>
             </div>
             <div style="height: 50px;"></div>
             {{ form.name(placeholder="Название услуги") }}
